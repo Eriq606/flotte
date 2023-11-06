@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  springboot-service:
+    build: .
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+  db:
+    build: ./src/main/resources/Dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=voiture
+      - POSTGRES_USER=eriq
+      - POSTGRES_PASSWORD=root
